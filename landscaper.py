@@ -139,3 +139,42 @@ def store(total):
                         store(total)
         else:
             print('How did you get here?')
+
+
+def inventory():
+    print()
+    for idx, tool in enumerate(tools):
+        if tool['owned'] == True:
+            print(f"{idx}| {tool['name']}")
+    print('5| Exit')
+    print()
+    selection = int(input('Please enter your selection: '))
+
+    while selection != 0 and selection != 1 and selection != 2 and selection != 3 and selection != 4 and selection != 5:
+        selection = int(input('Not a correct selection, please try again: '))
+
+    if selection != 5:
+        if selection == 0:
+            for idx, tool in enumerate(tools):
+                if tool['name'] == 'teeth':
+                    equip(idx)
+
+        elif selection == 1:
+            for idx, tool in enumerate(tools):
+                if tool['name'] == 'rusty scissors':
+                    equip(idx)
+
+        elif selection == 2:
+            for idx, tool in enumerate(tools):
+                if tool['name'] == 'push lawnmower':
+                    equip(idx)
+        elif selection == 3:
+            for idx, tool in enumerate(tools):
+                if tool['name'] == 'battery-powered lawnmower':
+                    equip(idx)
+        elif selection == 4:
+            for idx, tool in enumerate(tools):
+                if tool['name'] == 'starving students':
+                    equip(idx)
+        else:
+            print('How did you get here?')
