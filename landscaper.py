@@ -71,3 +71,71 @@ def userInput():
     choice = int(input(
         'Enter 1 to start cutting grass, 2 to upgrade to a new tool, or 3 to access your inventory: '))
     return choice
+
+def cut(total):
+    for tool in tools:
+        if tool['equipped'] == True:
+            total = total + tool['income']
+    return total
+
+
+def store(total):
+    print()
+    for idx, tool in enumerate(tools):
+        if tool['owned'] == False:
+            print(f"{idx}| {tool['name']}, cost: {tool['cost']}")
+    print('5| Exit')
+    print()
+    selection = int(input('Please enter your selection: '))
+
+    while selection != 1 and selection != 2 and selection != 3 and selection != 4 and selection != 5:
+        selection = int(input('Not a correct selection, please try again'))
+
+    if selection != 5:
+        if selection == 1:
+            for idx, tool in enumerate(tools):
+                if tool['name'] == 'rusty scissors':
+                    if total >= tool['cost']:
+                        tool['owned'] = True
+                        total -= tool['cost']
+                        equip(idx)
+                        return total
+                    else:
+                        print('Not enough money!')
+                        store(total)
+        elif selection == 2:
+            for idx, tool in enumerate(tools):
+                if tool['name'] == 'push lawnmower':
+                    if total >= tool['cost']:
+                        tool['owned'] = True
+                        total -= tool['cost']
+                        equip(idx)
+                        return total
+                    else:
+                        print('Not enough money!')
+                        store(total)
+        elif selection == 3:
+            for idx, tool in enumerate(tools):
+                if tool['name'] == 'battery-powered lawnmower':
+                    if total >= tool['cost']:
+                        tool['owned'] = True
+                        total -= tool['cost']
+                        equip(idx)
+                        return total
+                    else:
+                        print()
+                        print('Not enough money!')
+                        store(total)
+        elif selection == 4:
+            for idx, tool in enumerate(tools):
+                if tool['name'] == 'starving students':
+                    if total >= tool['cost']:
+                        tool['owned'] = True
+                        total -= tool['cost']
+                        equip(idx)
+                        return total
+                    else:
+                        print('Not enough money!')
+                        store(total)
+        else:
+            print('How did you get here?')
