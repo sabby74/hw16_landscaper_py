@@ -67,3 +67,7 @@ def equip(idx):
         tools[idx]['equipped'] = True
 
 
+def userInput():
+    choice = int(input(
+        'Enter 1 to start cutting grass, 2 to upgrade to a new tool, or 3 to access your inventory: '))
+    return choice
